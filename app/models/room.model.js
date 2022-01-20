@@ -1,12 +1,17 @@
 module.exports = (sequelize, Sequelize) => {
     const Room = sequelize.define("app_room", {
-        roomId: {
-            type: Sequelize.BIGINT
+        room_id: {
+            type: Sequelize.BIGINT,
+            autoIncrement: true,
+            primaryKey: true
         },
-        roomName: {
+        room_name: {
             type: Sequelize.STRING
         },
-        sessionId: {
+        room_owner : {
+            type: Sequelize.STRING  
+        },
+        session_id: {
             type: Sequelize.STRING
         }
     }, {

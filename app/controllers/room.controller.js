@@ -4,20 +4,19 @@ const Room = db.room;
 
 const Op = db.Sequelize.Op;
 
+const { 
+  v1: uuidv1,
+  v4: uuidv4,
+} = require('uuid');
+
 // Create and Save a new Todo
 exports.create = (req, res) => {
-    // Validate request
-    if (!req.body.title) {
-        res.status(400).send({
-            message: "Content can not be empty!"
-        });
-        return;
-    }
-
+    
     // Create a Room
     const room = {
-        roomId: req.body.roomId,
-        roomName: req.body.roomName
+        room_name: req.body.roomName,
+        room_owner: req.body.roomOwner,
+        session_id: uuidv1()
     };
 
     // Save Room in the database
